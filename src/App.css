@@ -1,0 +1,201 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.bg1 {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://t3.ftcdn.net/jpg/05/13/59/72/360_F_513597277_YYqrogAmgRR9ohwTUnOM784zS9eYUcSk.jpg");
+    background-size: contain;
+    height: 810px;
+}
+
+
+.md {
+    width: 40%;
+    /* height: 500px; */
+    border: 1px solid black;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative;
+    left: 27%; */
+    background-color: rgb(235, 243, 240);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 10px 10px 5px rgb(221, 218, 218);
+    box-shadow: 10px 10px 5px rgb(221, 218, 218);
+}
+
+.main-ToDo {
+    width: 100%;
+
+    padding-bottom: -100px;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* position: relative; */
+    /* top: 15%; */
+
+}
+
+#img1 {
+    width: 100%;
+    height: 180px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.part-1 {
+    background-color: rgb(248, 248, 248);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 90%;
+    height: 140px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    top: -120px;
+    border-radius: 15px;
+}
+
+#head {
+    position: relative;
+    top: -170px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: rgb(246, 246, 246);
+}
+
+.part-2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: white;
+
+    width: 90%;
+    position: relative;
+    top: -110px;
+    height: 400px;
+    overflow: auto;
+    margin-bottom: -80px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+}
+
+.ml {
+    display: flex;
+    justify-content: space-evenly;
+    overflow-y: auto;
+    max-height: 100px;
+}
+
+#search {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-size: 18px;
+    font-style: italic;
+    width: 230px;
+}
+
+#click {
+    width: 30%;
+    font-size: 17px;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(210, 61, 61);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.item-task {
+    width: 200px;
+    overflow: auto;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+}
+
+span {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+}
+
+#del {
+    border: none;
+    color: rgb(248, 1, 1);
+
+}
+
+#status {
+    background-color: rgb(15, 78, 78);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+}
+#head-2{
+    text-align: center;
+    font-size: 31px;
+    text-decoration:underline;
+    font-style: oblique;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+}
+#time{
+    width: 40%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+.abc{
+    width: 200px;
+}
+
+.cd{
+    width: 70px;
+}
+
+.de{
+    width: 80px;
+    height: 50px;
+    font-size: 17px;
+    border-radius: 8px;
+    color:crimson ;
+    font-weight: bold;
+    font-style: oblique;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    background-color: lightcyan;
+}
+.ef{
+    width: 80px;
+    height: 50px;
+    font-size: 17px;
+    border-radius: 8px;
+    color:crimson ;
+    font-weight: bold;
+    font-style: oblique;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    background-color: lightcyan;
+}
