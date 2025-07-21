@@ -1,199 +1,87 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'
+import './App.css';
 
-import headerbg from "./To-do list header img.jpg"
-import todobackground from "./todo-background.jpg"
-import whitebg2 from "./todo-list white bg.jpg"
-import Todologinpage from './Todologinpage';
+import headerbg from "./todo-bg.jpg"
 
-
+// import headerbg from "./images/todo-header.png"; // Make sure to save the image in this path
 
 function App() {
+  const [text, setText] = useState("");
+  const [time, setTime] = useState("");
+  const [st, setst] = useState(0);
+  const [arr, setArr] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
 
-  // function showurl(){
-  //   alert("current url:" + window.location.href)
-  // }
+  const addTask = () => {
+    if (!text || !time) return;
+    const newTasks = [...arr, { task: text, time, st }];
+    setArr(newTasks);
+    localStorage.setItem("key", JSON.stringify(newTasks));
+    setText("");
+    setTime("");
+  };
 
-  // function realoadpage(){
-  //   location.reload()
-  // }
-
-  // function redireactpage(){
-  //   location.assign("hTtps://deepdataindia.com")
-  // }
-
-  // const [count, setCount] = useState(0)
-  const [on, setOn] = useState("Pending")
-  const [colo, setColo] = useState({ color: "red" })
-
-  const [text, setText] = useState("")
-  const [time, setTime] = useState("")
-  const [date, setDate] = useState("")
-  const [st, setst] = useState(0)
-
-
-  const [n1, setn1] = useState([])
-  const [newbtn, setnewbtn] = useState("panding")
-  const [trash1, settrash1] = useState([])
-
-  const [arr, setarr] = useState([])
-
-
-
-
-  const pp = () => {
-
-
-
-    setText("")
-    setTime("")
-    const s = [...arr, { task: text, time, st }]
-
-
-    setarr(s)
-    localStorage.setItem("key", JSON.stringify(s))
-
-
-  }
-
-
-  const del = (item) => {
-    console.log(`${item.task}and index is ${item.time}`)
-    const sd = arr.filter((im) => (im.time || im.task) != (item.time || item.task))
-    setarr(sd)
-
-
-  }
-
-
-
-  // ---------------------------
-  function fn1(item) {
-    const sd = [...n1, item]
-    setn1(sd)
-
-
-  }
-
-  function fn2(item) {
-    const st = n1.filter((ite) => ite.task != item.task)
-    const sd = [...st]
-    setn1(sd)
-  }
-
-  function final(item) {
-    if (newbtn == "panding") {
-      setnewbtn("complete")
-      fn1(item)
-
-
+  const toggleStatus = (item) => {
+    const isCompleted = completedTasks.some((t) => t.task === item.task);
+    if (isCompleted) {
+      setCompletedTasks(completedTasks.filter((t) => t.task !== item.task));
+    } else {
+      setCompletedTasks([...completedTasks, item]);
     }
+  };
 
-    else {
-      setnewbtn("panding")
-      fn2(item)
-    }
-  }
-
-  function trash(item, index) {
-
-    const arr1 = arr.filter((it) => it.task != item.task)
-    const ar = [...arr1]
-    setarr(ar)
-    localStorage.setItem("key", JSON.stringify(ar))
-
-  }
+  const deleteTask = (item) => {
+    const updatedTasks = arr.filter((t) => t.task !== item.task);
+    setArr(updatedTasks);
+    setCompletedTasks(completedTasks.filter((t) => t.task !== item.task));
+    localStorage.setItem("key", JSON.stringify(updatedTasks));
+  };
 
   useEffect(() => {
-    const auth = JSON.parse(localStorage.getItem("key"))
-
-    if (auth) {
-
-      setarr(auth)
-    }
-  });
+    const saved = JSON.parse(localStorage.getItem("key"));
+    if (saved) setArr(saved);
+  }, []);
 
   return (
-    <div className='bg1'>
+    <div className='todo-container'>
+      <div className="todo-wrapper">
+        <img src={headerbg} alt="Header" className="header-img" />
+        <h1 className='title'>To-Do List</h1>
 
-      {/* <div className="js-div">
-        <button onClick={showurl}>show current url</button>
-        <button onClick={realoadpage}>reload</button>
-        <button onClick={redireactpage}>go to exaple.com</button>
-      </div> */}
-
-
-
-
-
-      <div className='md'>
-        <div className="main-ToDo">
-
-          <img id="img1" src={headerbg} alt="" />
-          <h1 id='head'>ToDO List</h1>
-
-
-          <div className="part-1">
-
-            <input id='search' type="search" value={text} placeholder='What would you like to do?' onChange={(e) => setText(e.target.value)} />
-            <input id='time' type="time" value={time} placeholder='Enter Your To-do Time' onChange={(e) => setTime(e.target.value)} />
-            <button id='click' onClick={pp}>Add</button>
-          </div>
-
-
-          <div className="part-2">
-
-            <div className="task">
-
-              <h1 id='head-2'>Todo List</h1>
-
-
-
-
-              <div className='list'>
-
-                <ul class="list-group list-group-flush">
-
-
-                  <li class="list-group-item ml"><div className='item-task'>Task</div>  <span>Time</span>   <span>Status</span>  <span>Delete</span> </li>
-
-
-
-                  {arr.map((item, index) => <li class="list-group-item ml" style={{ backgroundColor: n1.some((ie) => ie.task == item.task) ? "red" : "green" }}><span className='abc'>{item.task}</span><span className='cd'>{item.time}</span><button className='de' onClick={() => { final(item) }}>{n1.some((ie) => ie.task == item.task) ? "panding" : "complete"} </button>
-                    <button className='ef' onClick={() => trash(item, index)}>Delete</button>
-                  </li>)}
-
-
-                </ul>
-
-
-
-
-              </div>
-
-            </div>
-
-
-
-
-
-          </div>
-
-
+        <div className="input-section">
+          <input type="text" placeholder='What would you like to do?' value={text} onChange={(e) => setText(e.target.value)} />
+          <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+          <button onClick={addTask}>Add</button>
         </div>
 
-
+        <div className="list-section">
+          <h2>Tasks</h2>
+          <ul className="task-list">
+            <li className="task-header">
+              <span>Task</span>
+              <span>Time</span>
+              <span>Status</span>
+              <span>Delete</span>
+            </li>
+            {arr.map((item, idx) => (
+              <li
+                key={idx}
+                className={`task-item ${completedTasks.some((t) => t.task === item.task) ? "completed" : "pending"}`}
+              >
+                <span>{item.task}</span>
+                <span>{item.time}</span>
+                <button onClick={() => toggleStatus(item)}>
+                  {completedTasks.some((t) => t.task === item.task) ? "Pending" : "Complete"}
+                </button>
+                <button onClick={() => deleteTask(item)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
-
-
     </div>
-
-
-  )
+  );
 }
 
-export default App
+export default App;
